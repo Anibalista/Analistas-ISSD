@@ -7,7 +7,7 @@ public class EjerMatrizUno {
 		System.out.println("Llenado automatico de los componentes de la matriz: ");
 		for(int i=0; i<matriz.length;i++) {
 			for(int j=0; j<matriz[i].length;j++) {
-				matriz[i][j] = (int)(1+Math.random()*8);
+				matriz[i][j] = (int)(1+Math.random()*9);
 			}
 		}
 	}
@@ -50,6 +50,32 @@ public class EjerMatrizUno {
 		System.out.println("La diagonal secundaria suma en total: "+suma);
 	}
 	
+	public void sumaFila (int fi) {
+		int suma = 0;
+		if (fi<matriz.length) {
+			for (int i=0; i<matriz[fi].length; i++) {
+				suma += matriz[fi][i];
+			}
+			System.out.println("La fila seleccionada suma "+suma);
+		} else
+			System.out.println("ERROR! La matriz tiene menos filas que eso.");
+		
+	}
+	
+	public void promediarElementos() {
+		double suma = 0;
+		int cantidad;
+		double promedio;
+		for (int i=0; i<matriz.length; i++) {
+			for (int j=0; j<matriz[i].length; j++) {
+				suma += matriz[i][j];
+			}
+		}
+		cantidad = matriz.length * matriz[0].length;
+		promedio = (double)(suma / cantidad);
+		System.out.println("El promedio de valor de los elementos es: "+promedio);
+    }
+	
 	public boolean checkSquareMatrix () {
 		boolean square;
 		if (matriz.length==matriz[0].length) {
@@ -66,8 +92,9 @@ public class EjerMatrizUno {
 		if(matriz1.checkSquareMatrix()) {
 			matriz1.getSumaDiagPrincipal();
 			matriz1.getSumaDiagSecundaria();
-		} else {
+		} else 
 			System.out.println("ERROR! La matriz no es cuadrada.");
-		}
+		matriz1.sumaFila(4);
+		matriz1.promediarElementos();
 	}
 }
